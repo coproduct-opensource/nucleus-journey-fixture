@@ -1,0 +1,16 @@
+prepare-receipt rc=0  }
+prepare-a rc=0  }
+prepare-b rc=0  }
+prepare-c rc=0  }
+verify-execution rc=0  }
+verify-execution-require-attested rc=1  Error: Backend("--require-attested: the node platform is not attested: {\"tier\":\"unattested\",\"reason\":\"no TPM attester configured (--node-evidence-tpm is unset)\",\"from\":\"receipt\"}")
+verify-logs rc=0  }
+verify-artifacts-a rc=0  }
+verify-artifacts-b rc=0  }
+verify-artifacts-c rc=0  }
+verify-host-effects rc=0  Establishes an authorized prefix, not execution success, guest-claim truth, or session completeness.
+TAMPER-verify-artifacts rc=1  Error: Backend("execution receipt refused: Artifact(\"artifact bytes differ from signed identity\")")
+TAMPER-verify-execution rc=1  Error: Backend("execution receipt refused: Authentication(\"root hash mismatch: expected 048a9eea45389a185b76a1f58a35dba09a5b1e0623c4a336664e924cdc6297df, computed 248a9eea45389a185b76a1f58a35dba09a5b
+TAMPER-verify-logs rc=1  Error: Backend("execution receipt refused: Log(\"stdout\")")
+TAMPER-verify-host-effects rc=1  Error: Invalid { line: 14, message: "host signature does not verify" }
+WRONGKEY-verify-host-effects rc=1  Error: Invalid { line: 1, message: "host signature does not verify" }

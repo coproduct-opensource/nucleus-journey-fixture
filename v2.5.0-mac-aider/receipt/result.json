@@ -1,0 +1,16 @@
+{
+  "state": "exited",
+  "exit_code": 0,
+  "stdout_sha256": "249a4a943363de627fc615f6d3f588ddcd4c1e9acb8bf012e7c3a85b7c66e559",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "launch_hash": "a240d00c46388876d53f1a7fdf21058eb10208e39ab16bd09023fd0c9a82bfc3",
+  "environment": {
+    "inputs_sha256": "2ac0de4e5ca700253c10d0a5579e86a66ab184358b3fe945cd5a46caf26149e9",
+    "complete_sha256": "50f25209905e4a0ea1b9f1c76aa98aa5ac4f9cc6f6b485a59dccd5d94906497f"
+  },
+  "program": {
+    "state": "bound",
+    "digest": "3be44a26c9df2999d8fe10555d7750c4e696fe6dcf370919eca0f11e761d0956"
+  },
+  "isolation": "uid_isolated"
+}

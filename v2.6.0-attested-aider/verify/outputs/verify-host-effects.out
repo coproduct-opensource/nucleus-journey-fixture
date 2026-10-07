@@ -1,0 +1,5 @@
+Verified 6 host authorizations for pod 310ce4d2-2f1e-4d80-b74e-5e485bd7da1e; head 0a9731ce76fcfb67be5433b4f6501dce1bea1aca2850c088c2dbdaa850056581
+2 of them carried a tainted session's data to a sink, each released by a single-use operator approval of that exact effect (the record names the approval and the labels it declassified).
+Verified 6 host transport outcomes; 0 authorizations have unknown outcomes.
+Response observations do not prove remote action success, guest-claim truth, or session completeness.
+Establishes an authorized prefix, not execution success, guest-claim truth, or session completeness.

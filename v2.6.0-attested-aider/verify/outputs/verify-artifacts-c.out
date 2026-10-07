@@ -1,0 +1,51 @@
+{
+  "execution_verified": true,
+  "artifact_bytes_verified": 4,
+  "artifacts_directory": "./verify/artifacts-c",
+  "claim": {
+    "schema": "nucleus.execution.v1",
+    "pod_id": "310ce4d2-2f1e-4d80-b74e-5e485bd7da1e",
+    "source_commit": "",
+    "source_tree": "",
+    "gate": "",
+    "program_digest": "36a2b12e6af67701b13a67683d3d8aaa6188e9bb8deb2716cbe1eec4770fb229",
+    "architecture": "x86_64",
+    "backend": "firecracker",
+    "uid_isolated": true,
+    "exit_code": 0,
+    "stdout_sha256": "b56285ec690307b834f5f0c56d4ac719b2a5022b413b0eca46b45ddf19c01c28",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "launch_hash": "19178abae1e8c5735a2440b6704edf837fe9c55f2348322e748238401d956cb0",
+    "environment_inputs_sha256": "2ac0de4e5ca700253c10d0a5579e86a66ab184358b3fe945cd5a46caf26149e9",
+    "environment_complete_sha256": "50f25209905e4a0ea1b9f1c76aa98aa5ac4f9cc6f6b485a59dccd5d94906497f",
+    "artifacts": {
+      "commit": {
+        "path": "out-aider/commit.txt",
+        "sha256": "7feebee0bbff19b9fea780e98c0f7a2c2c3fa83827c46c0c4c6b4475e00b339c",
+        "size": 41
+      },
+      "pr_response": {
+        "path": "out-aider/pr-response.json",
+        "sha256": "2f0f378c5a40ce8beebe620f560e0c8b5bf20066a17a683100b24da1d4eead71",
+        "size": 19552
+      },
+      "publish": {
+        "path": "out-aider/publish.txt",
+        "sha256": "97d2f39f9803dae87230a99addca2547a65b97e55c91db6c7cdaabbf60edc035",
+        "size": 1302
+      },
+      "push_response": {
+        "path": "out-aider/push-response.txt",
+        "sha256": "08e36c673a1f0fe3257341f06fe9a52c85c26feb3d3f5d076400746efdecab13",
+        "size": 71
+      }
+    },
+    "node_platform": {
+      "evidence": {
+        "evidence_sha256": "160dddd0f16797fcb9cd470388cb4c0bf0a53ea691af7dc4ab9fc9f7f0db7958",
+        "epoch": 7
+      }
+    }
+  },
+  "node_platform": null
+}

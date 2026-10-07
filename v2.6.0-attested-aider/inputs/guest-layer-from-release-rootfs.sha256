@@ -1,0 +1,10 @@
+ecd9dc38bc3efb7dbd6431f57e29d2f8d6a0f0d211e1464b3fef2cbfe266fcd2  /etc/nucleus/ca-bundle.pem
+afe08b3e95bbe75fd88e68850421f8a11a9acd9025ad387337433927cce8ec99  /init
+eaf24fb4a6a34aa95ca84361a94ae61ae95b00d0b08208105160d963e9d1859e  /usr/local/bin/nucleus-adversary-probe
+cb5b57bacfd2cb8862770e56aae89cbd63c1a24c547faa23e91bc2d550688e6a  /usr/local/bin/nucleus-egress-http
+951fbecb27a4c9f96a75ac5ac4ba8e7310e23a7c58a9d7fa9aef73f1a7e6f689  /usr/local/bin/nucleus-egress-probe
+3ad095c790fcb6571f52a6fa011e773cd1cb1a7ae51383a53388f71a69f7b58d  /usr/local/bin/nucleus-mcp
+b5900c467a9618d60971eea5b4a785772d617f0bb9d9a57e14c3e07e0273f8ec  /usr/local/bin/nucleus-net-probe
+1a7ec7cecf4f63d2a8ecf4b6f22d41c02f01bb79cdfdcaebef2d5962ec22075b  /usr/local/bin/nucleus-podlist-probe
+04b07224598e0eee8b1d867e5ca6d03699aa73691ba811c08139d5c00ee1851f  /usr/local/bin/nucleus-tool-proxy
+c2c65a7361724ad469473f4bfe98a7c4b049040aecdcb85123a8879fee1dea50  /usr/local/bin/nucleus-workload-probe

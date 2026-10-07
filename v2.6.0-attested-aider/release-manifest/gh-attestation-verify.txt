@@ -1,0 +1,9 @@
+== nucleus-2.6.0-x86_64.node-reference.json: OK refs/tags/v2.6.0 a57fc0ea9a5d87264d879c66b1b7b6aff4161b44 https://github.com/coproduct-opensource/nucleus/.github/workflows/release.yml@refs/tags/v2.6.0
+== nucleus-audit-2.6.0-aarch64-apple-darwin.tar.gz: OK refs/tags/v2.6.0 a57fc0ea9a5d87264d879c66b1b7b6aff4161b44 https://github.com/coproduct-opensource/nucleus/.github/workflows/release.yml@refs/tags/v2.6.0
+== nucleus-audit-2.6.0-x86_64-unknown-linux-musl.tar.gz: OK refs/tags/v2.6.0 a57fc0ea9a5d87264d879c66b1b7b6aff4161b44 https://github.com/coproduct-opensource/nucleus/.github/workflows/release.yml@refs/tags/v2.6.0
+== nucleus-cli-2.6.0-x86_64-unknown-linux-musl.tar.gz: OK refs/tags/v2.6.0 a57fc0ea9a5d87264d879c66b1b7b6aff4161b44 https://github.com/coproduct-opensource/nucleus/.github/workflows/release.yml@refs/tags/v2.6.0
+== nucleus-guest-kernel-2.6.0-x86_64.vmlinux: OK refs/tags/v2.6.0 a57fc0ea9a5d87264d879c66b1b7b6aff4161b44 https://github.com/coproduct-opensource/nucleus/.github/workflows/release.yml@refs/tags/v2.6.0
+== nucleus-mcp-2.6.0-x86_64-unknown-linux-musl.tar.gz: OK refs/tags/v2.6.0 a57fc0ea9a5d87264d879c66b1b7b6aff4161b44 https://github.com/coproduct-opensource/nucleus/.github/workflows/release.yml@refs/tags/v2.6.0
+== nucleus-node-2.6.0-x86_64-unknown-linux-musl.tar.gz: OK refs/tags/v2.6.0 a57fc0ea9a5d87264d879c66b1b7b6aff4161b44 https://github.com/coproduct-opensource/nucleus/.github/workflows/release.yml@refs/tags/v2.6.0
+== nucleus-rootfs-2.6.0-x86_64.ext4.gz: OK refs/tags/v2.6.0 a57fc0ea9a5d87264d879c66b1b7b6aff4161b44 https://github.com/coproduct-opensource/nucleus/.github/workflows/release.yml@refs/tags/v2.6.0
+== nucleus-tool-proxy-2.6.0-x86_64-unknown-linux-musl.tar.gz: OK refs/tags/v2.6.0 a57fc0ea9a5d87264d879c66b1b7b6aff4161b44 https://github.com/coproduct-opensource/nucleus/.github/workflows/release.yml@refs/tags/v2.6.0

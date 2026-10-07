@@ -1,0 +1,5 @@
+95abe8cf47fe4015b9cfe08e95dfb9fc6c3b230b921cd1f3e222f0b002674202  /usr/local/bin/nucleus-node
+99ad0f5cd0514a88aad0e9ae8cfdb3cc3b4ab9d190e1194602406c786b5de7a5  /usr/local/bin/firecracker
+65ef226e96f0ceda55ba643f445801ef2cc0ea667ef67cad8ac4f406c9c8434f  /usr/local/bin/jailer
+691c4455d576d98bfc119a175e8ff64730e61741f518859936d9fd483ef93f3a  /var/lib/nucleus/artifacts/rootfs.ext4
+21c1b167482f3c10428b8fd5e08bbeea14258ce74479730712dc11a4f34d2029  /var/lib/nucleus/artifacts/vmlinux

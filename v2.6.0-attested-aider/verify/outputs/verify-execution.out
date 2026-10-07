@@ -1,0 +1,35 @@
+{
+  "execution_verified": true,
+  "artifact_bytes_verified": null,
+  "artifacts_directory": null,
+  "claim": {
+    "schema": "nucleus.execution.v1",
+    "pod_id": "310ce4d2-2f1e-4d80-b74e-5e485bd7da1e",
+    "source_commit": "",
+    "source_tree": "",
+    "gate": "",
+    "program_digest": "36a2b12e6af67701b13a67683d3d8aaa6188e9bb8deb2716cbe1eec4770fb229",
+    "architecture": "x86_64",
+    "backend": "firecracker",
+    "uid_isolated": true,
+    "exit_code": 0,
+    "stdout_sha256": "b56285ec690307b834f5f0c56d4ac719b2a5022b413b0eca46b45ddf19c01c28",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "launch_hash": "19178abae1e8c5735a2440b6704edf837fe9c55f2348322e748238401d956cb0",
+    "environment_inputs_sha256": "2ac0de4e5ca700253c10d0a5579e86a66ab184358b3fe945cd5a46caf26149e9",
+    "environment_complete_sha256": "50f25209905e4a0ea1b9f1c76aa98aa5ac4f9cc6f6b485a59dccd5d94906497f",
+    "artifacts": {},
+    "node_platform": {
+      "evidence": {
+        "evidence_sha256": "160dddd0f16797fcb9cd470388cb4c0bf0a53ea691af7dc4ab9fc9f7f0db7958",
+        "epoch": 7
+      }
+    }
+  },
+  "node_platform": {
+    "verdict": "authorized_platform_not_attested",
+    "platform": {
+      "not_appraised": "the receipt names node evidence 160dddd0f16797fcb9cd470388cb4c0bf0a53ea691af7dc4ab9fc9f7f0db7958 (epoch 7); pass --node-evidence and --node-reference to appraise it"
+    }
+  }
+}

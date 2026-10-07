@@ -1,0 +1,10 @@
+d159b0d782a8192dc25229406185f3d5c2b5a4167f979321da2839328dde7a1b  nucleus-2.6.0-x86_64.node-reference.json
+cd66534ec8bce40228cc6e7a5579adccbc32ab2c9893f965c82d5760e833cbc2  nucleus-audit-2.6.0-aarch64-apple-darwin.tar.gz
+8482ffa809ff3cb6a3cea59904349f6cbf3173d9c1d4a9c30c626fc089b58562  nucleus-audit-2.6.0-x86_64-unknown-linux-musl.tar.gz
+2ceab1ce67245bf4da2765ee1d47917dec0e1be8d369ad407d68d2b1b294a922  nucleus-cli-2.6.0-x86_64-unknown-linux-musl.tar.gz
+21c1b167482f3c10428b8fd5e08bbeea14258ce74479730712dc11a4f34d2029  nucleus-guest-kernel-2.6.0-x86_64.vmlinux
+02915e41f1b6f102a2018b55d1bc1791c841d5f1b8135b07dc389199ae923762  nucleus-mcp-2.6.0-x86_64-unknown-linux-musl.tar.gz
+19b77fc466a12176cdf2d3f9787dbd2a36a58aeb61a8f784301ffd2013e29fc6  nucleus-node-2.6.0-x86_64-unknown-linux-musl.tar.gz
+25ffb22fcdc18c0926f8048264035d6e2d1bf8cbe0f4c40a385990c198b75f8f  nucleus-rootfs-2.6.0-x86_64.ext4.gz
+a7ee6ec79b4c8b8bd2a71b1cc3ae8d5a2e3ce803bcf7804e14f68b1ff26e1e75  nucleus-tool-proxy-2.6.0-x86_64-unknown-linux-musl.tar.gz
+e030b801e62193260ed1a72c3f53a9b3bfd85abbc909ca9ae036599e2d6b97e2  nucleus-v2.6.0.provenance.intoto.jsonl

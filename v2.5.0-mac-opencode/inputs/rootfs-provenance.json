@@ -1,0 +1,20 @@
+{
+  "mke2fs": {
+    "major": 1,
+    "minor": 47,
+    "patch": 2
+  },
+  "accepted": ">= 1.47.1, < 1.48.0",
+  "config_sha256": "6aad81fe0eddaa2f2b38f8d6aeba7e04eb928a4f87887ef1372b849de0bef788",
+  "input": "tar",
+  "uuid": "22f6911f-07a1-8d01-b027-8fda9b5b710e",
+  "fixed_epoch": 946684800,
+  "owner": {
+    "uid": 0,
+    "gid": 0
+  },
+  "layout": {
+    "bytes": 1636827136,
+    "inodes": 37448
+  }
+}

@@ -1,0 +1,8 @@
+1542ffa256e4365028e78ad1d24257f9eac53db9270289f049a9ab602d229517  nucleus-2.5.0-aarch64.node-reference.json
+3c79c768da4666b003ce1762bf7b85675b9ecfada54215e904fe50946fbb6c65  nucleus-audit-2.5.0-aarch64-apple-darwin.tar.gz
+76427a74a81bad4b3fa87a89d22f1812a3e2943865685f6f632be27a81cbf199  nucleus-cli-2.5.0-aarch64-apple-darwin.tar.gz
+048d462b75089bfd87bd20d47dd36ee8ca8cca89d0539310f11ed5211224c47a  nucleus-cli-2.5.0-aarch64-unknown-linux-musl.tar.gz
+223a3d9e405fddc215d795ad95a97513916ad53937748271a0d6d3bf34c79fd7  nucleus-mcp-2.5.0-aarch64-unknown-linux-musl.tar.gz
+55254881887e45c01334736f4341ac7867383d770a0f012bc1919ba64a35ac1c  nucleus-node-2.5.0-aarch64-unknown-linux-musl.tar.gz
+b437dd658a6e386116e11042fc630d134a46f7867e0b773fb13036a6cad7c8e0  nucleus-rootfs-2.5.0-aarch64.ext4.gz
+edcce4d87f2c3e7d7450ede482a1da903b64ef4952fcc033f5aa86ffad5d38c8  nucleus-tool-proxy-2.5.0-aarch64-unknown-linux-musl.tar.gz

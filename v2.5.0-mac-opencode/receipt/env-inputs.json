@@ -1,0 +1,12 @@
+{
+ "HOME": "/work/.home",
+ "PATH": "/opt/aider/bin:/usr/local/bin:/usr/bin:/bin",
+ "LANG": "C.UTF-8",
+ "TZ": "UTC",
+ "JOURNEY_MODEL": "qwen/qwen3-coder-480b-a35b-instruct-maas",
+ "JOURNEY_PHASE_SECS": "3600",
+ "LITELLM_LOCAL_MODEL_COST_MAP": "True",
+ "NUCLEUS_EGRESS_CODING_MODEL_URL": "unix:///run/nucleus-door/workload.sock/v1/egress/coding-model",
+ "NUCLEUS_EGRESS_FORGE_URL": "unix:///run/nucleus-door/workload.sock/v1/egress/forge",
+ "NUCLEUS_EGRESS_FORGE_GIT_URL": "unix:///run/nucleus-door/workload.sock/v1/egress/forge-git"
+}

@@ -1,0 +1,24 @@
+body sha256: fd45b39d7dc8a095648f2ad28cdabb1d0b5b909907594434b048518fba9716ab bytes: 1326
+ref update (pkt-line): 0000000000000000000000000000000000000000 8007cbbc8ffe1373f3aed12a0463fea81c08339f refs/heads/journey/aider-20261006T184212Z | caps: report-status agent=git/2.39.5
+pack header: b'PACK' objects: 3
+--- commit
+tree 1410cd68160b1c531f6503bfdc449cbade8a7df2
+parent 9c052db15022a16cc589131efe00e77636de99e4
+author nucleus release journey (aider) <journey@nucleus.invalid> 1791312132 +0000
+committer nucleus release journey (aider) <journey@nucleus.invalid> 1791312132 +0000
+
+Repair summary.py (aider in a nucleus Firecracker pod, release journey v2.5.0)
+
+--- blob (2000 bytes, sha256 7ae94fff11791dc0…): first lines:
+"""Summarize ordinary CSV usage records by project and unit."""
+import csv
+import io
+import decimal
+from collections import defaultdict
+
+
+def summarize_csv(text):
+    # Configure decimal for exact arithmetic with proper rounding
+    decimal.getcontext().prec = 30
+    decimal.getcontext().rounding = decimal.ROUND_HALF_EVEN
+    

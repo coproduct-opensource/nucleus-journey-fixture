@@ -1,0 +1,18 @@
+NUCLEUS_EGRESS_HTTP_READY coding-model http://127.0.0.1:33591
+NUCLEUS_EGRESS_HTTP_READY forge-git http://127.0.0.1:35619
+NUCLEUS_EGRESS_HTTP_READY forge http://127.0.0.1:46007
+harness=opencode
+2026-10-06T18:56:11Z
+model=qwen/qwen3-coder-480b-a35b-instruct-maas
+model_url=http://127.0.0.1:33591
+git_url=http://127.0.0.1:35619
+forge_url=http://127.0.0.1:46007
+harness_start=2026-10-06T18:56:12Z
+harness_exit=0
+harness_end=2026-10-06T19:06:28Z
+tests_exit=0
+retained_tests_exit=0
+changed=summary.py
+push_status=200 pushed=Fals branch=journey/opencode-20261006T190630Z
+pr_status=201 pr_url=https://github.com/coproduct-opensource/nucleus-journey-fixture/pull/2
+publish_exit=0

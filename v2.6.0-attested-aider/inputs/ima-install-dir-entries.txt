@@ -1,0 +1,8 @@
+
+
+68
+10 248191c05cdf23249db725940dbcdcafb9c22d034f34e6b346f0db881648b2e8 ima-ng sha256:95abe8cf47fe4015b9cfe08e95dfb9fc6c3b230b921cd1f3e222f0b002674202 /usr/local/bin/nucleus-node
+10 c52d4b58786c54a17807c69bed09b293f3b96814166a686ef8e346aa6af0eb39 ima-ng sha256:99ad0f5cd0514a88aad0e9ae8cfdb3cc3b4ab9d190e1194602406c786b5de7a5 /usr/local/bin/firecracker
+10 e5c37b4982011166f80fabab7c4494d682b9c354c18056c743bf24f1f64a5ea0 ima-ng sha256:65ef226e96f0ceda55ba643f445801ef2cc0ea667ef67cad8ac4f406c9c8434f /usr/local/bin/jailer
+BOOT_IMAGE=/vmlinuz-7.0.0-1011-gcp root=PARTUUID=25738ee1-aeb2-42e1-895b-9a587dbb9157 ro console=ttyS0,115200 panic=-1
+SecureBoot enabled

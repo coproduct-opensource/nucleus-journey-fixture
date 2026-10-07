@@ -1,0 +1,66 @@
+#!/bin/bash
+# Off-box (Mac, aarch64) verification of the v2.6.0 attested journey with the RELEASE v2.6.0
+# darwin nucleus-audit and ONLY published inputs: the cosign-verified release manifest.
+set -u
+A=./rel/darwin/nucleus-audit
+RREF=./rel/nucleus-2.6.0-x86_64.node-reference.json
+D=$1; cd "$D"; V=$D/verify; rm -rf "$V"; mkdir -p "$V"
+SIGNER=6b2248863d28ed3fe824706db9fd72d58364da7b8f8097a6f1d685b34b9630b7   # executor pubkey (node's public /v1/node/keys)
+HOSTPUB=c80b7a5b991858937f16eb93e254cad1432df7b1483af57a93dc1eebf2b393da  # cert root pubkey (operator)
+PIN="$(cat ./work/operator-pin.txt)"
+FED=$(jq -r .binding.federation.jwks_sha256 evidence-epoch.json)
+P=$(cat pod_id)
+VALID=$(( ($(date +%s) + 86400) * 1000000 ))
+r() { local name=$1; shift; "$@" > "$V/$name.out" 2>&1; local rc=$?; echo "$name rc=$rc  $(tail -1 "$V/$name.out" | cut -c1-300)"; }
+r prepare-receipt $A prepare-execution --admission admission.json --signer-key-hex "$SIGNER" --environment-inputs env-inputs.json --valid-until-micros "$VALID"
+cp "$V/prepare-receipt.out" "$V/expected-receipt.json"
+for k in a b c; do
+  r prepare-$k $A prepare-execution --admission admission.json --signer-key-hex "$SIGNER" --environment-inputs env-inputs.json --valid-until-micros "$VALID" --artifacts artifacts-$k.json
+  cp "$V/prepare-$k.out" "$V/expected-$k.json"
+done
+r verify-execution $A verify-execution --receipt receipt.json --expectations "$V/expected-receipt.json"
+# THE stranger check: release manifest alone (+ the AK pin, the only operator input the AK anchor admits)
+r verify-execution-require-attested-release-ref $A verify-execution --receipt receipt.json --expectations "$V/expected-receipt.json" --node-evidence evidence-epoch.public.json --node-reference $RREF --operator-pin "$PIN" --require-attested
+# release manifest alone, NO operator pin at all
+r NOPIN-verify-execution-require-attested-release-ref $A verify-execution --receipt receipt.json --expectations "$V/expected-receipt.json" --node-evidence evidence-epoch.public.json --node-reference $RREF --require-attested
+r verify-node-evidence-challenge $A verify-node-evidence --evidence evidence-challenge.json --reference $RREF --executor-ed25519 $SIGNER --federation $FED --nonce $(cat challenge-nonce.txt) --operator-pin "$PIN"
+r REPLAY-verify-node-evidence-challenge $A verify-node-evidence --evidence evidence-challenge.json --reference $RREF --executor-ed25519 $SIGNER --federation $FED --nonce $(openssl rand -hex 32) --operator-pin "$PIN"
+r OLD-verify-node-evidence-epoch $A verify-node-evidence --evidence evidence-epoch.json --reference $RREF --executor-ed25519 $SIGNER --federation $FED --receipt-time $(($(jq .freshness.epoch.iat evidence-epoch.json)+3600)) --max-age-secs 900 --operator-pin "$PIN"
+r WRONGFED-verify-node-evidence $A verify-node-evidence --evidence evidence-challenge.json --reference $RREF --executor-ed25519 $SIGNER --nonce $(cat challenge-nonce.txt) --operator-pin "$PIN"
+r verify-logs $A verify-logs --receipt receipt.json --expectations "$V/expected-receipt.json" --stdout logs/stdout.bin --stderr logs/stderr.bin
+for k in a b c; do r verify-artifacts-$k $A verify-artifacts --bundle bundle-$k.json --expectations "$V/expected-$k.json" --output-dir "$V/artifacts-$k"; done
+r verify-host-effects $A verify-host-effects --log node-records/host-effect-authorizations.jsonl --outcomes node-records/host-effect-outcomes.jsonl --host-pubkey "$HOSTPUB" --pod "$P"
+T=$V/tamper; mkdir -p "$T"
+python3 - "$D" "$T" <<'PY'
+import json, base64, sys
+D, T = sys.argv[1], sys.argv[2]
+b = json.load(open(f"{D}/bundle-a.json")); diff = base64.b64decode(b["artifacts"]["diff"])
+b["artifacts"]["diff"] = base64.b64encode(diff.replace(b"ROUND_HALF_EVEN", b"ROUND_HALF_UP", 1) if b"ROUND_HALF_EVEN" in diff else diff + b"\n# tampered\n").decode()
+json.dump(b, open(f"{T}/bundle-a.json", "w"))
+r = json.load(open(f"{D}/receipt.json")); h = r["root_hash_hex"]; r["root_hash_hex"] = ("0" if h[0] != "0" else "1") + h[1:]
+json.dump(r, open(f"{T}/receipt.json", "w"))
+out = open(f"{D}/logs/stdout.bin", "rb").read()
+open(f"{T}/stdout.bin", "wb").write(out.replace(b"pushed=True", b"pushed=Fals", 1) if b"pushed=True" in out else out + b"x")
+lines = open(f"{D}/node-records/host-effect-authorizations.jsonl").read().splitlines()
+for i, l in enumerate(lines):
+    rec = json.loads(l)
+    if "declassification" in rec["authorization"]:
+        del rec["authorization"]["declassification"]; lines[i] = json.dumps(rec, separators=(",", ":")); break
+open(f"{T}/host-effect-authorizations.jsonl", "w").write("\n".join(lines) + "\n")
+e = json.load(open(f"{D}/evidence-epoch.public.json")); e["freshness"]["epoch"]["iat"] += 1
+json.dump(e, open(f"{T}/evidence-epoch.json", "w"))
+PY
+python3 - "$RREF" "$T/manifest-wrong-node-digest.json" <<'PY'
+import json, sys
+m = json.load(open(sys.argv[1])); al = m["reference-values"]["ima"]["required"]["allowlist"]
+d = al["/usr/local/bin/nucleus-node"][0]; al["/usr/local/bin/nucleus-node"] = [("0" if d[0] != "0" else "1") + d[1:]]
+json.dump(m, open(sys.argv[2], "w"), indent=2)
+PY
+r TAMPER-verify-artifacts $A verify-artifacts --bundle "$T/bundle-a.json" --expectations "$V/expected-a.json"
+r TAMPER-verify-execution $A verify-execution --receipt "$T/receipt.json" --expectations "$V/expected-receipt.json"
+r TAMPER-verify-logs $A verify-logs --receipt receipt.json --expectations "$V/expected-receipt.json" --stdout "$T/stdout.bin" --stderr logs/stderr.bin
+r TAMPER-verify-host-effects $A verify-host-effects --log "$T/host-effect-authorizations.jsonl" --host-pubkey "$HOSTPUB" --pod "$P"
+r WRONGKEY-verify-host-effects $A verify-host-effects --log node-records/host-effect-authorizations.jsonl --host-pubkey "${HOSTPUB%?}$( [ "${HOSTPUB: -1}" = 0 ] && echo 1 || echo 0)" --pod "$P"
+r TAMPER-node-evidence-require-attested $A verify-execution --receipt receipt.json --expectations "$V/expected-receipt.json" --node-evidence "$T/evidence-epoch.json" --node-reference $RREF --operator-pin "$PIN" --require-attested
+r WRONGPIN-require-attested $A verify-execution --receipt receipt.json --expectations "$V/expected-receipt.json" --node-evidence evidence-epoch.public.json --node-reference $RREF --operator-pin "${PIN%?}0" --require-attested
+r TAMPERED-MANIFEST-require-attested $A verify-execution --receipt receipt.json --expectations "$V/expected-receipt.json" --node-evidence evidence-epoch.public.json --node-reference "$T/manifest-wrong-node-digest.json" --operator-pin "$PIN" --require-attested

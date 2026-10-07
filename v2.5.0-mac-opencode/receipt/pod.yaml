@@ -1,0 +1,99 @@
+# Release journey v2.5.0, harness=opencode (operator-side spec, not repo code).
+# Seed a FRESH workspace per run from ws-input and substitute its scratch path/digest.
+# Profile `release`: web_fetch (the model) is allowed; git_push and create_pr carry
+# approval obligations, and after model output the host holds them as declassifications.
+apiVersion: nucleus/v1
+kind: Pod
+metadata:
+  name: journey-v250-opencode
+spec:
+  work_dir: /work
+  timeout_seconds: 7000
+  policy:
+    type: profile
+    name: release
+  credentialed_egress:
+    - name: coding-model
+      upstream: https://aiplatform.googleapis.com/v1/projects/gatehouse-510101/locations/global/endpoints/openapi
+      credential_env: ""
+      header: authorization
+      value_prefix: "Bearer "
+    - name: forge
+      upstream: https://api.github.com
+      credential_env: ""
+      header: authorization
+      value_prefix: "Bearer "
+      effects:
+        kind: forge
+        effects:
+          - method: POST
+            path: /repos/*/*/pulls
+            operation: create_pr
+    - name: forge-git
+      upstream: https://github.com/
+      credential_env: ""
+      header: authorization
+      value_prefix: ""
+  workload:
+    command: /usr/local/bin/nucleus-egress-http
+    args:
+      - --upstream
+      - coding-model
+      - --upstream
+      - forge-git
+      - --upstream
+      - forge
+      - --export
+      - JOURNEY_MODEL_URL=coding-model
+      - --export
+      - JOURNEY_GIT_URL=forge-git
+      - --export
+      - JOURNEY_FORGE_URL=forge
+      - --placeholder
+      - OPENAI_API_KEY
+      - --timeout-seconds
+      - "900"
+      - --
+      - /bin/sh
+      - /work/journey.sh
+      - opencode
+    uid: 65534
+    env:
+      HOME: /work/.home
+      PATH: /opt/aider/bin:/usr/local/bin:/usr/bin:/bin
+      LANG: C.UTF-8
+      TZ: UTC
+      JOURNEY_MODEL: qwen/qwen3-coder-480b-a35b-instruct-maas
+      JOURNEY_PHASE_SECS: "3600"
+      LITELLM_LOCAL_MODEL_COST_MAP: "True"
+    artifacts:
+      run: out-opencode/run.txt
+      diff: out-opencode/diff.patch
+      tests: out-opencode/tests.txt
+      retained_tests: out-opencode/retained-tests.txt
+      baseline_tests: out-opencode/baseline-tests.txt
+      harness_stdout: out-opencode/harness.stdout
+      harness_stderr: out-opencode/harness.stderr
+      head: out-opencode/head.txt
+      input_check: out-opencode/input-check.txt
+      output_hashes: out-opencode/output.sha256
+      harness_log: out-opencode/harness.log
+      status: out-opencode/status.txt
+      publish: out-opencode/publish.txt
+      push_response: out-opencode/push-response.txt
+      pr_response: out-opencode/pr-response.json
+      commit: out-opencode/commit.txt
+  image:
+    kernel_path: /var/lib/nucleus/artifacts/vmlinux
+    rootfs_path: /var/lib/nucleus/artifacts/journey-harness-rootfs.ext4
+    kernel_digest: "sha-256:69aa3308219ec1a070bc9a8e7f80c3b34056fed8ae05efb44e55f73b31adde44"
+    rootfs_digest: "sha-256:ccd7f8ad5f1b770762c21925e3848bb4b3246b97c00ec7af1d3abc6d4279bf38"
+    read_only: true
+    scratch_path: /srv/state/scratch/workspace-c4d2d77d-d0d4-4572-9e4e-e856e8d87671.ext4
+    scratch_digest: "sha-256:fad56e39821aa99828694d89dc2844ca4d2ae97599bdedcc6f1d5940cd41eccc"
+  resources:
+    cpu_cores: 2
+    memory_mib: 2048
+  vsock:
+    guest_cid: 3
+    port: 5005

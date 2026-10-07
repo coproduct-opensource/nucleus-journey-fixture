@@ -1,0 +1,57 @@
+#!/bin/bash
+# Verify one release-journey run dir with the release nucleus-audit (v2.5.0), plus one
+# tamper control per check. usage: verify.sh <run_dir>
+set -u
+E=<scratch>/journey-v250
+A=$E/bin/nucleus-audit
+D=$1; cd "$D"; V=$D/verify; rm -rf "$V"; mkdir -p "$V"
+SIGNER=$(cat "<scratch>/enrolled-key.hex")    # enrolled 2026-10-05 (P7), independent of this run
+HOSTPUB=$(cat "$E/host-cert-root.pubkey.hex")
+P=$(cat pod_id)
+VALID=$(( ($(date +%s) + 86400) * 1000000 ))
+r() { local name=$1; shift; "$@" > "$V/$name.out" 2>&1; local rc=$?; echo "$name rc=$rc  $(tail -1 "$V/$name.out" | cut -c1-200)"; }
+
+r prepare-receipt $A prepare-execution --admission admission.json --signer-key-hex "$SIGNER" \
+  --environment-inputs env-inputs.json --valid-until-micros "$VALID"
+cp "$V/prepare-receipt.out" "$V/expected-receipt.json"
+for k in a b c; do
+  r prepare-$k $A prepare-execution --admission admission.json --signer-key-hex "$SIGNER" \
+    --environment-inputs env-inputs.json --valid-until-micros "$VALID" --artifacts artifacts-$k.json
+  cp "$V/prepare-$k.out" "$V/expected-$k.json"
+done
+r verify-execution $A verify-execution --receipt receipt.json --expectations "$V/expected-receipt.json"
+r verify-execution-require-attested $A verify-execution --receipt receipt.json --expectations "$V/expected-receipt.json" --require-attested
+r verify-logs $A verify-logs --receipt receipt.json --expectations "$V/expected-receipt.json" --stdout logs/stdout.bin --stderr logs/stderr.bin
+for k in a b c; do
+  r verify-artifacts-$k $A verify-artifacts --bundle bundle-$k.json --expectations "$V/expected-$k.json" --output-dir "$V/artifacts-$k"
+done
+r verify-host-effects $A verify-host-effects --log node-records/host-effect-authorizations.jsonl \
+  --outcomes node-records/host-effect-outcomes.jsonl --host-pubkey "$HOSTPUB" --pod "$P"
+
+# ---- tamper controls (each must FAIL) ----
+T=$V/tamper; mkdir -p "$T"
+python3 - "$D" "$T" <<'PY'
+import json, base64, sys
+D, T = sys.argv[1], sys.argv[2]
+b = json.load(open(f"{D}/bundle-a.json"))
+diff = base64.b64decode(b["artifacts"]["diff"])
+b["artifacts"]["diff"] = base64.b64encode(diff.replace(b"ROUND_HALF_EVEN", b"ROUND_HALF_UP", 1) if b"ROUND_HALF_EVEN" in diff else diff + b"\n# tampered\n").decode()
+json.dump(b, open(f"{T}/bundle-a.json", "w"))
+r = json.load(open(f"{D}/receipt.json"))
+h = r["root_hash_hex"]; r["root_hash_hex"] = ("0" if h[0] != "0" else "1") + h[1:]
+json.dump(r, open(f"{T}/receipt.json", "w"))
+out = open(f"{D}/logs/stdout.bin", "rb").read()
+open(f"{T}/stdout.bin", "wb").write(out.replace(b"pushed=True", b"pushed=Fals", 1) if b"pushed=True" in out else out + b"x")
+lines = open(f"{D}/node-records/host-effect-authorizations.jsonl").read().splitlines()
+# strip the declassification from the first record that carries one (must break its signature)
+for i, l in enumerate(lines):
+    rec = json.loads(l)
+    if "declassification" in rec["authorization"]:
+        del rec["authorization"]["declassification"]; lines[i] = json.dumps(rec, separators=(",", ":")); break
+open(f"{T}/host-effect-authorizations.jsonl", "w").write("\n".join(lines) + "\n")
+PY
+r TAMPER-verify-artifacts $A verify-artifacts --bundle "$T/bundle-a.json" --expectations "$V/expected-a.json"
+r TAMPER-verify-execution $A verify-execution --receipt "$T/receipt.json" --expectations "$V/expected-receipt.json"
+r TAMPER-verify-logs $A verify-logs --receipt receipt.json --expectations "$V/expected-receipt.json" --stdout "$T/stdout.bin" --stderr logs/stderr.bin
+r TAMPER-verify-host-effects $A verify-host-effects --log "$T/host-effect-authorizations.jsonl" --host-pubkey "$HOSTPUB" --pod "$P"
+r WRONGKEY-verify-host-effects $A verify-host-effects --log node-records/host-effect-authorizations.jsonl --host-pubkey "${HOSTPUB%?}$( [ "${HOSTPUB: -1}" = 0 ] && echo 1 || echo 0)" --pod "$P"

@@ -1,0 +1,20 @@
+# P7 coding-journey harness image (x86_64 for the attested re-run; same pins as the v2.5.0 arm64 journey). Base is pinned by digest (BASE_DIGEST).
+ARG BASE=docker.io/library/node:22.23.3-bookworm-slim
+FROM ${BASE}
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends python3 python3-venv git ca-certificates ripgrep \
+ && rm -rf /var/lib/apt/lists/*
+RUN python3 -m venv /opt/aider \
+ && /opt/aider/bin/pip install --no-cache-dir aider-chat==0.86.2 \
+ && ln -s /opt/aider/bin/aider /usr/local/bin/aider
+RUN npm install -g @continuedev/cli@1.5.47 opencode-ai@1.18.34 && npm cache clean --force
+RUN mkdir -p /usr/share/p7-harness \
+ && /opt/aider/bin/pip freeze --all > /usr/share/p7-harness/pip-freeze.txt \
+ && npm ls -g --all --json > /usr/share/p7-harness/npm-ls.json \
+ && dpkg-query -W > /usr/share/p7-harness/dpkg.txt \
+ && (aider --version; cn --version; opencode --version; rg --version | head -1; node --version; python3 --version; git --version) > /usr/share/p7-harness/versions.txt 2>&1 \
+ && cat /usr/share/p7-harness/versions.txt \
+ && rm -rf /tmp/* /tmp/.[!.]* /run/* /root/.npm /root/.cache
+ENV PATH=/opt/aider/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+USER 65534:65534
+WORKDIR /work

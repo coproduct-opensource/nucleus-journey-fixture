@@ -1,0 +1,101 @@
+{
+  "approval": {
+    "id": "09230bd1-d05c-41de-a1e5-bfd9244e71a9",
+    "operation": "create_pr",
+    "subject": "https://api.github.com/repos/coproduct-opensource/nucleus-journey-fixture/pulls",
+    "effect_sha256": "462cf271eed48fef391d716af4f575ea38168008ebcc78a077f92170db5c77a1",
+    "call_charge_micro_usd": 0,
+    "expires_unix": 1791313063,
+    "status": "pending",
+    "category": {
+      "declassification": {
+        "input": {
+          "integrity": "adversarial",
+          "confidentiality": "internal",
+          "derivation": "opaque_external"
+        }
+      }
+    }
+  },
+  "request": {
+    "require_approval": true,
+    "operation": "CreatePr",
+    "upstream": "forge",
+    "url": "https://api.github.com/repos/coproduct-opensource/nucleus-journey-fixture/pulls",
+    "method": "POST",
+    "credential_header": "authorization",
+    "content_type": "application/json",
+    "body_sha256": [
+      97,
+      74,
+      248,
+      15,
+      39,
+      249,
+      51,
+      222,
+      98,
+      206,
+      223,
+      124,
+      246,
+      130,
+      248,
+      26,
+      122,
+      40,
+      142,
+      95,
+      34,
+      37,
+      244,
+      203,
+      30,
+      12,
+      106,
+      11,
+      110,
+      3,
+      128,
+      120
+    ],
+    "body_bytes": 670,
+    "call_charge_micro_usd": 0,
+    "request_headers": {
+      "accept": "application/vnd.github+json",
+      "user-agent": "nucleus-release-journey",
+      "x-github-api-version": "2022-11-28"
+    }
+  },
+  "body_base64": "eyJiYXNlIjogIm1haW4iLCAiYm9keSI6ICJSZXBhaXJlZCBieSBgYWlkZXJgIHJ1bm5pbmcgaW4gYSBudWNsZXVzIEZpcmVjcmFja2VyIHBvZCAocmVsZWFzZSB2Mi41LjApLlxuXG4tIGJhc2VsaW5lIGNvbW1pdDogYDljMDUyZGIxNTAyMmExNmNjNTg5MTMxZWZlMDBlNzc2MzZkZTk5ZTRgXG4tIHJlcGFpciBjb21taXQ6IGA4MDA3Y2JiYzhmZmUxMzczZjNhZWQxMmEwNDYzZmVhODFjMDgzMzlmYFxuLSB0ZXN0cyBpbiB0aGUgcG9kOiBgUmFuIDkgdGVzdHMgaW4gMC4wMDJzIE9LYFxuXG5UaGUgcG9kIGhvbGRzIG5vIGZvcmdlIGNyZWRlbnRpYWw6IHRoZSBob3N0IG1pbnRlZCBhIHBlci1jYWxsIHRva2VuIGZvciB0aGUgcHVzaCBhbmQgZm9yIHRoaXMgcmVxdWVzdCwgYW5kIGhlbGQgYm90aCBmb3IgdGhlIG9wZXJhdG9yJ3MgYXBwcm92YWwgYmVjYXVzZSB0aGV5IGZvbGxvdyBtb2RlbCBvdXRwdXQgKGEgZGVjbGFzc2lmaWNhdGlvbikuIEV2aWRlbmNlIGZvciB0aGlzIHJ1biBpcyBrZXB0IGJ5IHRoZSBvcGVyYXRvci4iLCAiaGVhZCI6ICJqb3VybmV5L2FpZGVyLTIwMjYxMDA2VDE4NDIxMloiLCAibWFpbnRhaW5lcl9jYW5fbW9kaWZ5IjogZmFsc2UsICJ0aXRsZSI6ICJSZXBhaXIgc3VtbWFyeS5weSAoYWlkZXIsIG51Y2xldXMgcmVsZWFzZSBqb3VybmV5IHYyLjUuMCkifQ==",
+  "body_utf8": "{\"base\": \"main\", \"body\": \"Repaired by `aider` running in a nucleus Firecracker pod (release v2.5.0).\\n\\n- baseline commit: `9c052db15022a16cc589131efe00e77636de99e4`\\n- repair commit: `8007cbbc8ffe1373f3aed12a0463fea81c08339f`\\n- tests in the pod: `Ran 9 tests in 0.002s OK`\\n\\nThe pod holds no forge credential: the host minted a per-call token for the push and for this request, and held both for the operator's approval because they follow model output (a declassification). Evidence for this run is kept by the operator.\", \"head\": \"journey/aider-20261006T184212Z\", \"maintainer_can_modify\": false, \"title\": \"Repair summary.py (aider, nucleus release journey v2.5.0)\"}",
+  "declassification": {
+    "notice": "GRANTING THIS APPROVAL DECLASSIFIES TAINTED DATA: the session holds data labelled below, and this one request would carry it to the sink",
+    "input": {
+      "integrity": "adversarial",
+      "confidentiality": "internal",
+      "derivation": "opaque_external"
+    },
+    "input_described": {
+      "integrity": "adversarial: content an outside party controls (upstream or model responses, web pages, issue bodies)",
+      "confidentiality": "internal: private repository, workspace or environment data",
+      "derivation": "opaque external: an outside system of unknown provenance"
+    },
+    "sink": {
+      "operation": "create_pr",
+      "subject": "https://api.github.com/repos/coproduct-opensource/nucleus-journey-fixture/pulls"
+    },
+    "bound_request": {
+      "method": "POST",
+      "url": "https://api.github.com/repos/coproduct-opensource/nucleus-journey-fixture/pulls",
+      "query_parameter_names": [],
+      "forwarded_header_names": [
+        "accept",
+        "user-agent",
+        "x-github-api-version"
+      ],
+      "body_sha256": "614af80f27f933de62cedf7cf682f81a7a288e5f2225f4cb1e0c6a0b6e038078",
+      "body_bytes": 670
+    }
+  }
+}

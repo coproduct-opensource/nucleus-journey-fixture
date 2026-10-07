@@ -1,0 +1,70 @@
+{
+  "execution_verified": true,
+  "artifact_bytes_verified": 8,
+  "artifacts_directory": "./verify/artifacts-a",
+  "claim": {
+    "schema": "nucleus.execution.v1",
+    "pod_id": "c076fb32-2ed1-4f3a-ae15-8b49ade976b6",
+    "source_commit": "",
+    "source_tree": "",
+    "gate": "",
+    "program_digest": "3be44a26c9df2999d8fe10555d7750c4e696fe6dcf370919eca0f11e761d0956",
+    "architecture": "aarch64",
+    "backend": "firecracker",
+    "uid_isolated": true,
+    "exit_code": 0,
+    "stdout_sha256": "249a4a943363de627fc615f6d3f588ddcd4c1e9acb8bf012e7c3a85b7c66e559",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "launch_hash": "a240d00c46388876d53f1a7fdf21058eb10208e39ab16bd09023fd0c9a82bfc3",
+    "environment_inputs_sha256": "2ac0de4e5ca700253c10d0a5579e86a66ab184358b3fe945cd5a46caf26149e9",
+    "environment_complete_sha256": "50f25209905e4a0ea1b9f1c76aa98aa5ac4f9cc6f6b485a59dccd5d94906497f",
+    "artifacts": {
+      "baseline_tests": {
+        "path": "out-aider/baseline-tests.txt",
+        "sha256": "0da852e0cc58480d1a73ce4dc06a03954d5ae77896415ce9a1c4aa64de2e7a76",
+        "size": 8542
+      },
+      "diff": {
+        "path": "out-aider/diff.patch",
+        "sha256": "ceb7f8842ecfd1ab6987796c0e147daed3568d7cc992f4459bc6088dbd1c5af0",
+        "size": 2520
+      },
+      "harness_stderr": {
+        "path": "out-aider/harness.stderr",
+        "sha256": "dd7e4edb84ed0988e73d9fef5f031910be61df17b9bc3ca63a7eac522f1e5a4d",
+        "size": 41
+      },
+      "harness_stdout": {
+        "path": "out-aider/harness.stdout",
+        "sha256": "709ffcd002a91a8c054869b8863770f36d26a22b43fe809f64c5844307899d03",
+        "size": 4239
+      },
+      "head": {
+        "path": "out-aider/head.txt",
+        "sha256": "c9cf2774d473c90f0f8648ecc1f271452e22ab068b29adaadcfbce8aee96ad2a",
+        "size": 41
+      },
+      "retained_tests": {
+        "path": "out-aider/retained-tests.txt",
+        "sha256": "61e9e4e63ee36c268e03310ec2ff994761c63b4473ec714735edbe7b949cf455",
+        "size": 1072
+      },
+      "run": {
+        "path": "out-aider/run.txt",
+        "sha256": "97d0b8de3233398a5de6a02937dae8431a2d633ef0c745f768b4415cc386a3a0",
+        "size": 489
+      },
+      "tests": {
+        "path": "out-aider/tests.txt",
+        "sha256": "7e966a1199f2648153760b1b88cc14ab0e955663d6a0aea395ce1cf1a40241ac",
+        "size": 1063
+      }
+    },
+    "node_platform": {
+      "unattested": {
+        "reason": "no TPM attester configured (--node-evidence-tpm is unset)"
+      }
+    }
+  },
+  "node_platform": null
+}

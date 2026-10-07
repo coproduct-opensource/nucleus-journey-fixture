@@ -1,0 +1,36 @@
+{
+  "execution_verified": true,
+  "artifact_bytes_verified": null,
+  "artifacts_directory": null,
+  "claim": {
+    "schema": "nucleus.execution.v1",
+    "pod_id": "dd1f9ab5-0d20-4b40-aac8-4ced75cd336c",
+    "source_commit": "",
+    "source_tree": "",
+    "gate": "",
+    "program_digest": "61d1a85c9e9104682f8d90249a653daa05f2f129b087df0fb96bc0c30ea4e858",
+    "architecture": "aarch64",
+    "backend": "firecracker",
+    "uid_isolated": true,
+    "exit_code": 0,
+    "stdout_sha256": "462de8fa25c967a6581b369b5a1e96be51f5a0378f6183bb3fc8a52f02425efe",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "launch_hash": "a240d00c46388876d53f1a7fdf21058eb10208e39ab16bd09023fd0c9a82bfc3",
+    "environment_inputs_sha256": "2ac0de4e5ca700253c10d0a5579e86a66ab184358b3fe945cd5a46caf26149e9",
+    "environment_complete_sha256": "50f25209905e4a0ea1b9f1c76aa98aa5ac4f9cc6f6b485a59dccd5d94906497f",
+    "artifacts": {},
+    "node_platform": {
+      "unattested": {
+        "reason": "no TPM attester configured (--node-evidence-tpm is unset)"
+      }
+    }
+  },
+  "node_platform": {
+    "verdict": "authorized_platform_not_attested",
+    "platform": {
+      "tier": "unattested",
+      "reason": "no TPM attester configured (--node-evidence-tpm is unset)",
+      "from": "receipt"
+    }
+  }
+}

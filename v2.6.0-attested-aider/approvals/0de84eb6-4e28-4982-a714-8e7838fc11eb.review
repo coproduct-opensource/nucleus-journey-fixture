@@ -1,0 +1,99 @@
+{
+  "approval": {
+    "id": "0de84eb6-4e28-4982-a714-8e7838fc11eb",
+    "operation": "git_push",
+    "subject": "https://github.com/coproduct-opensource/nucleus-journey-fixture.git/git-receive-pack",
+    "effect_sha256": "8235f1f328edb5fb9cac6a0a03b01c596eceeba168fef68f2d7e1bcd925e76df",
+    "call_charge_micro_usd": 0,
+    "expires_unix": 1791340546,
+    "status": "pending",
+    "category": {
+      "declassification": {
+        "input": {
+          "integrity": "adversarial",
+          "confidentiality": "internal",
+          "derivation": "opaque_external"
+        }
+      }
+    }
+  },
+  "request": {
+    "require_approval": true,
+    "operation": "GitPush",
+    "upstream": "forge-git",
+    "url": "https://github.com/coproduct-opensource/nucleus-journey-fixture.git/git-receive-pack",
+    "method": "POST",
+    "credential_header": "authorization",
+    "content_type": "application/x-git-receive-pack-request",
+    "body_sha256": [
+      29,
+      39,
+      246,
+      22,
+      133,
+      118,
+      91,
+      214,
+      250,
+      211,
+      147,
+      130,
+      103,
+      13,
+      173,
+      185,
+      46,
+      26,
+      188,
+      37,
+      231,
+      34,
+      72,
+      72,
+      114,
+      255,
+      197,
+      21,
+      234,
+      229,
+      39,
+      9
+    ],
+    "body_bytes": 1452,
+    "call_charge_micro_usd": 0,
+    "request_headers": {
+      "accept": "application/x-git-receive-pack-result",
+      "user-agent": "git/2.39.5"
+    }
+  },
+  "body_base64": "MDA5ZjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAgOWNmNWE4ODgyNWVhNDhiYjc3NzUzMTU3NDJjNTVhMGI0YzUzYjM1OCByZWZzL2hlYWRzL2pvdXJuZXkvYWlkZXItMjAyNjEwMDdUMDIwNTQ1WgByZXBvcnQtc3RhdHVzIGFnZW50PWdpdC8yLjM5LjUKMDAwMFBBQ0sAAAACAAAAA5QWeJytjk1qwzAUhPc6xVs2tDX6sSQLQuiqu0IpvcCz9EzU2pKRpUBuXxfSnKCznBm+mVqIQCOfpEDFHaIMOLqR907bIViD/eTRCSODVpqtWChVcJ5rGUahuZQojPd6cEIJmohzstYoE8g56hm2es4FUvMztQ0KzYQbwVduJdEVHjAGKgc43oyXW7GL6YJzDCcQdgerwfYaHvku5vOyxFrpX6Hsg1aMBba2LFiu3fpHgZgA70uvsZAv6L/3YM0B8m/4+f72jPuhrVKAlAM93R9dZGc6fmA/SbRytKkJeJwzNDAwMzFRCHJ1dPF11ctNYcgICK+c/mreLBV5xYdzd0uXWeWVuBhCFIU4BnuDlCiJKoSUBwc+2zt1Cw/beedT2zhzBKBKiktzcxOLKvUKKhkOt2jvFNkdx1LIqa/MectnSUFCvD1UVUlqcUk8klJtq08VG3q6Tx2c+S3uq9aGuT/NWw0AYJg3972QAXicnVVNb9tIDL37VxDKIRLWEZICvRjIoUhctMA2KZLdXILAmEqUPV1pRp0ZJXGM/PflfEr2btDu+iJZQz6Sj4+cLMtuh65jir8gSFVzwdQWLm7vYNBsjaCwoq8avm2hV/I7VgaYqGEQ3JRZls1410tloNKP8ZXL+FZjxTvWzholO6hk25I3l0JDOm/Y0JqaV2Y2m9E/0DGVFQHmBp9NsZgB/Y7gQoqGrweFERYaqQCfmc1IcbPp0PDKJbdhbXOCjyhAyUFQSWuHEfzKNZpKCgueF2W0gPN0fnP959Xl6tOH3z+ulnfLqxD/Fg1s+HpDNJCdpjrASAol6hahZYq4EkP3DZV+O5h1pUDvT51JAP7KlEbHuM39kbW8ZgYtX0MnPJhCVqMiT2KlvCS6btyHnMvy1ijK/vO1J6sI5j8GrrBeBQxy3GWhe9kcMts8+/wxMGG42Wavzq3jWhPWxOsfQCeg0eQ+nbLh2NaCdah9WN4cQvjeuZQYpyLvWDvgUimp8ib74m1joQvYHc/huPwuucg1yQPr/ACuKF6zYo86JSvUmtr8pOGJNBD0EBUy6sI5GGlYq12nk/Dy2KhL//T4LRe48u0k8zMb65PvAdfuEM7GPKwOKQPgIjRqLHsfJ/AWPyar9HIEy2ejWJgxIRUlZOfSMa2TWRzEcxv2PnX2odQkhj4vkqFtdLRyTU8mZSufSECjadTCigyiS9LHw7+leheV6iSQDkgFQpqY40jFGypYdr0ZV4uFAposR/Fuwl5s/CSCLegX4R0Pv4T9Vo22H70b1EhKsjJqu59GtJislCCufMryGBSfK+wNJCl+Fm4LXPeomF2Yc/hj2/uSip9WHJzHLP5TyYHb6FxyvWo4sYf5zyNfSXHijf9n8CP4UFVDN7SW8ck4H4yx/f2Flt486GbuOjyi+kG/J6MH+O18v2VhdXy0w2VoJDUtgrA8CI0oT5eGa7rdRPEC8cYU9/4hDf5BCvOxdFoHYY35dEoiptN5MSHyCG5sLGKpQrCh1xS7t/eKeZJpi/Utoy3nU3zjavNgF7RgrFZDDi8E6JzMBkFb9YebaLzCDsb/xa2pQ9Een5anZ8cjuy4yXQoTnSe9RJw8AU78HH0l63sUdb7b00BaYou4C+b75259LRzJBydpSy2gyXaHyS3Kd81rljxei/1VptAMSoTUZn8DG3fVjPRwPW5QuL4sMF0aARI2GRduKRAR",
+  "body_utf8": null,
+  "declassification": {
+    "notice": "GRANTING THIS APPROVAL DECLASSIFIES TAINTED DATA: the session holds data labelled below, and this one request would carry it to the sink",
+    "input": {
+      "integrity": "adversarial",
+      "confidentiality": "internal",
+      "derivation": "opaque_external"
+    },
+    "input_described": {
+      "integrity": "adversarial: content an outside party controls (upstream or model responses, web pages, issue bodies)",
+      "confidentiality": "internal: private repository, workspace or environment data",
+      "derivation": "opaque external: an outside system of unknown provenance"
+    },
+    "sink": {
+      "operation": "git_push",
+      "subject": "https://github.com/coproduct-opensource/nucleus-journey-fixture.git/git-receive-pack"
+    },
+    "bound_request": {
+      "method": "POST",
+      "url": "https://github.com/coproduct-opensource/nucleus-journey-fixture.git/git-receive-pack",
+      "query_parameter_names": [],
+      "forwarded_header_names": [
+        "accept",
+        "user-agent"
+      ],
+      "body_sha256": "1d27f61685765bd6fad39382670dadb92e1abc25e722484872ffc515eae52709",
+      "body_bytes": 1452
+    }
+  }
+}

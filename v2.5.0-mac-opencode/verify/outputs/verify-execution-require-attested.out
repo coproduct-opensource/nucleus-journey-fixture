@@ -1,0 +1,1 @@
+Error: Backend("--require-attested: the node platform is not attested: {\"tier\":\"unattested\",\"reason\":\"no TPM attester configured (--node-evidence-tpm is unset)\",\"from\":\"receipt\"}")

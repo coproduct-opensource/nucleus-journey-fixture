@@ -1,0 +1,71 @@
+{
+  "execution_verified": true,
+  "artifact_bytes_verified": 8,
+  "artifacts_directory": "./verify/artifacts-a",
+  "claim": {
+    "schema": "nucleus.execution.v1",
+    "pod_id": "310ce4d2-2f1e-4d80-b74e-5e485bd7da1e",
+    "source_commit": "",
+    "source_tree": "",
+    "gate": "",
+    "program_digest": "36a2b12e6af67701b13a67683d3d8aaa6188e9bb8deb2716cbe1eec4770fb229",
+    "architecture": "x86_64",
+    "backend": "firecracker",
+    "uid_isolated": true,
+    "exit_code": 0,
+    "stdout_sha256": "b56285ec690307b834f5f0c56d4ac719b2a5022b413b0eca46b45ddf19c01c28",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "launch_hash": "19178abae1e8c5735a2440b6704edf837fe9c55f2348322e748238401d956cb0",
+    "environment_inputs_sha256": "2ac0de4e5ca700253c10d0a5579e86a66ab184358b3fe945cd5a46caf26149e9",
+    "environment_complete_sha256": "50f25209905e4a0ea1b9f1c76aa98aa5ac4f9cc6f6b485a59dccd5d94906497f",
+    "artifacts": {
+      "baseline_tests": {
+        "path": "out-aider/baseline-tests.txt",
+        "sha256": "e2fe369f982e3d2d76757e5e7b44637f44ef9822b63a7784fad2ad095db78867",
+        "size": 8542
+      },
+      "diff": {
+        "path": "out-aider/diff.patch",
+        "sha256": "ebd7f925ce2b7c5fdb4ec7f351876b9a900456a27ae7acf92a32d590e307d1da",
+        "size": 2842
+      },
+      "harness_stderr": {
+        "path": "out-aider/harness.stderr",
+        "sha256": "dd7e4edb84ed0988e73d9fef5f031910be61df17b9bc3ca63a7eac522f1e5a4d",
+        "size": 41
+      },
+      "harness_stdout": {
+        "path": "out-aider/harness.stdout",
+        "sha256": "6e07d161ada03f3e9017d63f4c47b3b30589a845cb4f42ec1171767ec5d5a8fb",
+        "size": 9300
+      },
+      "head": {
+        "path": "out-aider/head.txt",
+        "sha256": "c9cf2774d473c90f0f8648ecc1f271452e22ab068b29adaadcfbce8aee96ad2a",
+        "size": 41
+      },
+      "retained_tests": {
+        "path": "out-aider/retained-tests.txt",
+        "sha256": "033d6310610949b96b424d6f11f99075045e298b3deae20ecdc7964826db5a60",
+        "size": 1072
+      },
+      "run": {
+        "path": "out-aider/run.txt",
+        "sha256": "fb788277364603a3bf5c55c924ae736c84d661d7ed422698ce9774792a39d013",
+        "size": 489
+      },
+      "tests": {
+        "path": "out-aider/tests.txt",
+        "sha256": "9c20ff66ab306567d28844b5168066cc7a8d0ea56ff01609d5949262f1890ead",
+        "size": 1063
+      }
+    },
+    "node_platform": {
+      "evidence": {
+        "evidence_sha256": "160dddd0f16797fcb9cd470388cb4c0bf0a53ea691af7dc4ab9fc9f7f0db7958",
+        "epoch": 7
+      }
+    }
+  },
+  "node_platform": null
+}

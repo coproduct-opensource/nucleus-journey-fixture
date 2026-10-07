@@ -1,0 +1,99 @@
+# Attested release journey v2.6.0 (x86_64 TPM-attested node), harness=aider (operator-side spec, not repo code).
+# Seed a FRESH workspace per run from ws-input and substitute its scratch path/digest.
+# Profile `release`: web_fetch (the model) is allowed; git_push and create_pr carry
+# approval obligations, and after model output the host holds them as declassifications.
+apiVersion: nucleus/v1
+kind: Pod
+metadata:
+  name: journey-v260-attested-aider
+spec:
+  work_dir: /work
+  timeout_seconds: 7000
+  policy:
+    type: profile
+    name: release
+  credentialed_egress:
+    - name: coding-model
+      upstream: https://aiplatform.googleapis.com/v1/projects/gatehouse-510101/locations/global/endpoints/openapi
+      credential_env: ""
+      header: authorization
+      value_prefix: "Bearer "
+    - name: forge
+      upstream: https://api.github.com
+      credential_env: ""
+      header: authorization
+      value_prefix: "Bearer "
+      effects:
+        kind: forge
+        effects:
+          - method: POST
+            path: /repos/*/*/pulls
+            operation: create_pr
+    - name: forge-git
+      upstream: https://github.com/
+      credential_env: ""
+      header: authorization
+      value_prefix: ""
+  workload:
+    command: /usr/local/bin/nucleus-egress-http
+    args:
+      - --upstream
+      - coding-model
+      - --upstream
+      - forge-git
+      - --upstream
+      - forge
+      - --export
+      - JOURNEY_MODEL_URL=coding-model
+      - --export
+      - JOURNEY_GIT_URL=forge-git
+      - --export
+      - JOURNEY_FORGE_URL=forge
+      - --placeholder
+      - OPENAI_API_KEY
+      - --timeout-seconds
+      - "900"
+      - --
+      - /bin/sh
+      - /work/journey.sh
+      - aider
+    uid: 65534
+    env:
+      HOME: /work/.home
+      PATH: /opt/aider/bin:/usr/local/bin:/usr/bin:/bin
+      LANG: C.UTF-8
+      TZ: UTC
+      JOURNEY_MODEL: qwen/qwen3-coder-480b-a35b-instruct-maas
+      JOURNEY_PHASE_SECS: "3600"
+      LITELLM_LOCAL_MODEL_COST_MAP: "True"
+    artifacts:
+      run: out-aider/run.txt
+      diff: out-aider/diff.patch
+      tests: out-aider/tests.txt
+      retained_tests: out-aider/retained-tests.txt
+      baseline_tests: out-aider/baseline-tests.txt
+      harness_stdout: out-aider/harness.stdout
+      harness_stderr: out-aider/harness.stderr
+      head: out-aider/head.txt
+      input_check: out-aider/input-check.txt
+      output_hashes: out-aider/output.sha256
+      harness_log: out-aider/harness.log
+      status: out-aider/status.txt
+      publish: out-aider/publish.txt
+      push_response: out-aider/push-response.txt
+      pr_response: out-aider/pr-response.json
+      commit: out-aider/commit.txt
+  image:
+    kernel_path: /var/lib/nucleus/artifacts/vmlinux
+    rootfs_path: /var/lib/nucleus/artifacts/journey-harness-rootfs.ext4
+    kernel_digest: "sha-256:21c1b167482f3c10428b8fd5e08bbeea14258ce74479730712dc11a4f34d2029"
+    rootfs_digest: "sha-256:6bddd98b0267ef10d5d60b4838167ffdbeac832520fe7c6fccb03e6699e9a8af"
+    read_only: true
+    scratch_path: /var/lib/nucleus/state/scratch/workspace-9720fd57-169f-4378-a608-ec44a773ce22.ext4
+    scratch_digest: "sha-256:a4ba80ca73e5967c9bca41c19992c4be0a5712a44719252d376817630eae94ae"
+  resources:
+    cpu_cores: 2
+    memory_mib: 2048
+  vsock:
+    guest_cid: 3
+    port: 5005

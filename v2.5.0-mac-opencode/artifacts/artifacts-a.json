@@ -1,0 +1,1 @@
+{"run": "out-opencode/run.txt", "diff": "out-opencode/diff.patch", "tests": "out-opencode/tests.txt", "retained_tests": "out-opencode/retained-tests.txt", "baseline_tests": "out-opencode/baseline-tests.txt", "harness_stdout": "out-opencode/harness.stdout", "harness_stderr": "out-opencode/harness.stderr", "head": "out-opencode/head.txt"}

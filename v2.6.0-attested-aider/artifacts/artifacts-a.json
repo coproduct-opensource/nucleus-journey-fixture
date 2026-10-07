@@ -1,0 +1,1 @@
+{"run": "out-aider/run.txt", "diff": "out-aider/diff.patch", "tests": "out-aider/tests.txt", "retained_tests": "out-aider/retained-tests.txt", "baseline_tests": "out-aider/baseline-tests.txt", "harness_stdout": "out-aider/harness.stdout", "harness_stderr": "out-aider/harness.stderr", "head": "out-aider/head.txt"}
